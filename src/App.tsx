@@ -34,6 +34,18 @@ function App() {
     <>
       <h1>🤔 Does my Lemmy instance support video streaming?</h1>
       <p>
+        <em>
+          Like this tool?{" "}
+          <a
+            href="https://github.com/aeharding/lemmy-streaming"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⭐️ on GitHub
+          </a>
+        </em>
+      </p>
+      <p>
         Many Lemmy instances are misconfigured, which can break progressive
         video streaming and even basic image loading in strange ways. The latest
         default lemmy-ansible config handles this correctly, but many instances
