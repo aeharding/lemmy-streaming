@@ -36,6 +36,6 @@ curl -I -H "Range: bytes=0-1" https://lemm.ee/pictrs/image/da54d1e7-9f78-47f8-a0
 
 > ℹ️ **Note:** You may have to bust the cache if you make changes (especially if you use Cloudflare) by appending a random query parameter like `?t=1234567` to the URL.
 
-**Expected:** A `206` response with `Content-Length: 2`.
+**Expected:** A `206` response with two bytes payload.
 
 **Incorrect:** A `200` response, meaning the server is ignoring partial requests, breaking video streaming. This usually indicates improper reverse proxy settings. You may need to enable the Nginx slice module—[as seen here in lemmy-ansible](https://github.com/LemmyNet/lemmy-ansible/pull/259/files). Check the [`ngx_http_slice_module` docs](https://nginx.org/en/docs/http/ngx_http_slice_module.html) for more details.

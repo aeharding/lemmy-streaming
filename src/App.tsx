@@ -104,8 +104,8 @@ function App() {
         parameter like <code>?t=1234567</code> to the url.
       </blockquote>
       <p>
-        <strong>Expected:</strong> A <code>206</code> response with{" "}
-        <code>Content-Length: 2</code>.
+        <strong>Expected:</strong> A <code>206</code> response response with two
+        bytes payload.
       </p>{" "}
       <p>
         <strong>Incorrect:</strong> A <code>200</code> response, meaning the
