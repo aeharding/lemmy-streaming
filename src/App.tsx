@@ -4,6 +4,12 @@ import "./App.css";
 import CustomInstance from "./CustomInstance";
 import Instance from "./Instance";
 
+interface MinLemmyInstance {
+  name: string;
+  base: string;
+  score: number;
+}
+
 function App() {
   const [instances, setInstances] = useState<string[]>([]);
 
@@ -13,7 +19,7 @@ function App() {
         "https://data.lemmyverse.net/data/instance.min.json",
       );
 
-      const data = await res.json();
+      const data: MinLemmyInstance[] = await res.json();
 
       const instances = data
         .sort((a, b) => b.score - a.score)

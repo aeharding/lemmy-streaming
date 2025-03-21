@@ -76,7 +76,8 @@ async function isSiteStreamingCapable(instance: string) {
         Range: "bytes=0-1",
       },
     });
-  } catch (_error) {
+  } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch");
   }
 
@@ -99,6 +100,19 @@ async function isSiteStreamingCapable(instance: string) {
   return `Supported`;
 }
 
+interface SiteInfo {
+  site_view: {
+    site: {
+      icon: string;
+    };
+  };
+  admins: {
+    person: {
+      avatar: string;
+    };
+  }[];
+}
+
 async function getIcon(instance: string) {
   const cachedIcon = localStorage.getItem(`icon-${instance}`);
 
@@ -108,6 +122,7 @@ async function getIcon(instance: string) {
   try {
     result = await fetch(`https://${instance}/api/v3/site`);
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch site info");
   }
 
@@ -115,7 +130,7 @@ async function getIcon(instance: string) {
     throw new Error("Bad response code for site info fetch");
   }
 
-  const data = await result.json();
+  const data: SiteInfo = await result.json();
 
   const icon =
     data.site_view.site.icon ??
